@@ -7,6 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mysql",
+    "restapi"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/takiuddin93/authAPI.git"
@@ -18,8 +24,12 @@
   },
   "homepage": "https://github.com/takiuddin93/authAPI#readme",
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mysql2": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
   }
 }
