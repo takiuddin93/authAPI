@@ -1,12 +1,13 @@
-const mysql = require('mysql2')
+const mysql = require('mysql2');
+var util = require('util');
 const pool = mysql.createPool({
-  host: '192.168.121.193',
-  user: 'root',
-  password: 'password',
-  database: 'asiatic360',
-  connectionLimit: 8,
-  port: '4000'
-})
+  port: process.env.DB_PORT,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.MYSQL_DB,
+  connectionLimit: 8
+});
 
 // Ping database to check for common exception errors.
 pool.getConnection((err, connection) => {
@@ -25,7 +26,7 @@ pool.getConnection((err, connection) => {
   if (connection) connection.release()
 
   return
-})
+});
 
 // Promisify for Node.js async/await.
 pool.query = util.promisify(pool.query)
