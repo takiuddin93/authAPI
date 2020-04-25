@@ -1,0 +1,21 @@
+{
+  "name": "authapi",
+  "version": "1.0.0",
+  "description": "RESTful API for signin, signup and such related tasks.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/takiuddin93/authAPI.git"
+  },
+  "author": "Taki Uddin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/takiuddin93/authAPI/issues"
+  },
+  "homepage": "https://github.com/takiuddin93/authAPI#readme"
+}
