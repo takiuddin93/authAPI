@@ -19,7 +19,7 @@ module.exports = {
       }
     );
   },
-  create_Users_Details: (data, callBack) => {
+  create_UsersDetails: (data, callBack) => {
     callback = callback || function () {};
     pool.query(
       `insert into users_details(u_id, firstname, lastname, nid_number, dob, blood_group, address, marital_status) values(?,?,?,?,?,?,?,?)`,
@@ -53,7 +53,7 @@ module.exports = {
       }
     );
   },
-  search_By_e_id: (e_id, callBack) => {
+  get_UsersbyEid: (e_id, callBack) => {
     pool.query(
       'select * from users where e_id = ?',
       [e_id],
@@ -64,17 +64,5 @@ module.exports = {
         return callBack(null, results[0]);
       }
     );
-  },
-  login: (e_id, callBack) => {
-    pool.query(
-      'select * from users where e_id = ?',
-      [e_id],
-      (error, results, fields) => {
-        if (error) {
-          callBack(error);
-        }
-        return callBack(null, results[0]);
-      }
-    );
-  },
+  }
 };

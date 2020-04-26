@@ -1,8 +1,8 @@
+require("dotenv").config();
 const {
   create_Users,
   get_Users,
-  search_By_e_id,
-  login
+  get_UsersbyEid
 } = require("./user.service");
 
 const {
@@ -10,12 +10,14 @@ const {
   genSaltSync,
   compareSync
 } = require("bcrypt");
+const {
+  sign
+} = require("jsonwebtoken");
 
 module.exports = {
   create_Users: (req, res) => {
     const body = req.body;
     const salt = genSaltSync(10);
-    console.log("Password: " + body.e_password);
     body.e_password = hashSync(body.e_password, salt);
     create_Users(body, (err, results) => {
       if (err) {
@@ -43,9 +45,9 @@ module.exports = {
       });
     });
   },
-  search_By_e_id: (req, res) => {
+  get_UsersbyEid: (req, res) => {
     const e_id = req.params.e_id;
-    search_By_e_id(e_id, (err, results) => {
+    get_UsersbyEid(e_id, (err, results) => {
       if (err) {
         console.log(err);
         return;
@@ -61,6 +63,39 @@ module.exports = {
         success: 1,
         data: results
       });
+    });
+  },
+  login: (req, res) => {
+    const body = req.body;
+    get_UsersbyEid(body.e_id, (err, results) => {
+      if (err) {
+        console.log(err);
+      }
+      if (!results) {
+        return res.json({
+          success: 0,
+          data: "Invalid employee id or password"
+        });
+      }
+      const result = compareSync(body.e_password, results.e_password);
+      if (result) {
+        results.e_password = undefined;
+        const jsontoken = sign({
+          result: results
+        }, 'takiuddin93', {
+          expiresIn: "1h"
+        });
+        return res.json({
+          success: 1,
+          message: "login successfully",
+          token: jsontoken
+        });
+      } else {
+        return res.json({
+          success: 0,
+          data: "Invalid employee id or password"
+        });
+      }
     });
   },
 };
