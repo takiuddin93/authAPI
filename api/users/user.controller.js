@@ -1,12 +1,14 @@
 const {
   create_Users,
   get_Users,
-  get_Users_E_Id
+  search_By_e_id,
+  login
 } = require("./user.service");
 
 const {
   hashSync,
-  genSaltSync
+  genSaltSync,
+  compareSync
 } = require("bcrypt");
 
 module.exports = {
@@ -41,9 +43,9 @@ module.exports = {
       });
     });
   },
-  get_Users_E_Id: (req, res) => {
+  search_By_e_id: (req, res) => {
     const e_id = req.params.e_id;
-    get_Users_E_Id(e_id, (err, results) => {
+    search_By_e_id(e_id, (err, results) => {
       if (err) {
         console.log(err);
         return;

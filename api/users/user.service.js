@@ -53,13 +53,25 @@ module.exports = {
       }
     );
   },
-  get_Users_E_Id: (e_id, callBack) => {
+  search_By_e_id: (e_id, callBack) => {
     pool.query(
       'select * from users where e_id = ?',
       [e_id],
       (error, results, fields) => {
         if (error) {
           return callBack(error);
+        }
+        return callBack(null, results[0]);
+      }
+    );
+  },
+  login: (e_id, callBack) => {
+    pool.query(
+      'select * from users where e_id = ?',
+      [e_id],
+      (error, results, fields) => {
+        if (error) {
+          callBack(error);
         }
         return callBack(null, results[0]);
       }
