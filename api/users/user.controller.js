@@ -2,7 +2,8 @@ require("dotenv").config();
 const {
   create_Users,
   get_Users,
-  get_UsersbyEid
+  get_UsersbyEid,
+  login_UsersbyEid
 } = require("./user.service");
 
 const {
@@ -65,9 +66,9 @@ module.exports = {
       });
     });
   },
-  login: (req, res) => {
+  login_UsersbyEid: (req, res) => {
     const body = req.body;
-    get_UsersbyEid(body.e_id, (err, results) => {
+    login_UsersbyEid(body.e_id, body.e_password, (err, results) => {
       if (err) {
         console.log(err);
       }

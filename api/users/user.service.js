@@ -1,5 +1,12 @@
 const pool = require("../../configs/database");
-
+const {
+  hashSync,
+  genSaltSync,
+  compareSync
+} = require("bcrypt");
+const {
+  sign
+} = require("jsonwebtoken");
 module.exports = {
   create_Users: (data, callBack) => {
     pool.query(
@@ -62,6 +69,33 @@ module.exports = {
           return callBack(error);
         }
         return callBack(null, results[0]);
+      }
+    );
+  },
+  login_UsersbyEid: (e_id, e_password, callBack) => {
+    pool.query(
+      'select * from users where e_id = ?',
+      [e_id],
+      (error, results, fields) => {
+        if (error) {
+          return callBack(error);
+        }
+        const result = compareSync(e_password, results[0].e_password);
+        e_password = results[0].e_password
+        if (result) {
+          pool.query(
+            'select * from users where e_id = ? and e_password = ?',
+            [e_id, e_password],
+            (error, results, fields) => {
+              if (error) {
+                return callBack(error);
+              }
+              return callBack(null, results[0]);
+            }
+          );
+        } else {
+          return callBack(error);
+        }
       }
     );
   }

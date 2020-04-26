@@ -1,13 +1,16 @@
 const router = require("express").Router();
 const {
+  checkToken
+} = require("../../token_auth/token_validation");
+const {
   create_Users,
   get_Users,
   get_UsersbyEid,
-  login
+  login_UsersbyEid
 } = require("./user.controller");
-router.post("/", create_Users);
-router.get("/", get_Users);
-router.get("/:e_id", get_UsersbyEid);
-router.post("/login", login);
+router.post("/", checkToken, create_Users);
+router.get("/", checkToken, get_Users);
+router.get("/:e_id", checkToken, get_UsersbyEid);
+router.post("/login", login_UsersbyEid);
 
 module.exports = router;
