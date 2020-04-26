@@ -1,6 +1,7 @@
 const {
   create_Users,
-  get_Users
+  get_Users,
+  get_Users_E_Id
 } = require("./user.service");
 
 const {
@@ -34,6 +35,26 @@ module.exports = {
         console.log(err);
         return;
       }
+      return res.json({
+        success: 1,
+        data: results
+      });
+    });
+  },
+  get_Users_E_Id: (req, res) => {
+    const e_id = req.params.e_id;
+    get_Users_E_Id(e_id, (err, results) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      if (!results) {
+        return res.json({
+          success: 0,
+          message: "Record not Found"
+        });
+      }
+      results.password = undefined;
       return res.json({
         success: 1,
         data: results

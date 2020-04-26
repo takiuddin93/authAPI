@@ -53,4 +53,16 @@ module.exports = {
       }
     );
   },
+  get_Users_E_Id: (e_id, callBack) => {
+    pool.query(
+      'select * from users where e_id = ?',
+      [e_id],
+      (error, results, fields) => {
+        if (error) {
+          return callBack(error);
+        }
+        return callBack(null, results[0]);
+      }
+    );
+  },
 };
