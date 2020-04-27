@@ -61,8 +61,16 @@ module.exports = {
       }
       results.password = undefined;
       return res.json({
-        response: 1,
-        employee: results
+        response: "ok",
+        employee: {
+          eID: results.e_id,
+          eName: results.firstname + " " + results.lastname,
+          eNID: results.nid_number,
+          eDoB: results.dob,
+          eBloodGroup: results.blood_group,
+          eAddress: results.address,
+          eMaritalStatus: results.maritalstatus
+        },
       });
     });
   },
