@@ -24,12 +24,12 @@ module.exports = {
       if (err) {
         console.log(err);
         return res.status(500).json({
-          success: 0,
+          response: 0,
           message: "Database connection errror"
         });
       }
       return res.status(200).json({
-        success: 1,
+        response: 1,
         data: results
       });
     });
@@ -41,7 +41,7 @@ module.exports = {
         return;
       }
       return res.json({
-        success: 1,
+        response: 1,
         data: results
       });
     });
@@ -55,14 +55,14 @@ module.exports = {
       }
       if (!results) {
         return res.json({
-          success: 0,
+          response: 0,
           message: "Record not Found"
         });
       }
       results.password = undefined;
       return res.json({
-        success: 1,
-        data: results
+        response: 1,
+        employee: results
       });
     });
   },
@@ -74,7 +74,7 @@ module.exports = {
       }
       if (!results) {
         return res.json({
-          success: 0,
+          response: 0,
           data: "Invalid employee id or password"
         });
       }
@@ -87,13 +87,12 @@ module.exports = {
           expiresIn: "1h"
         });
         return res.json({
-          success: 1,
-          message: "login successfully",
+          response: "ok",
           token: jsontoken
         });
       } else {
         return res.json({
-          success: 0,
+          response: 0,
           data: "Invalid employee id or password"
         });
       }

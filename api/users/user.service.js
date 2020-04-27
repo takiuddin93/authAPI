@@ -68,7 +68,18 @@ module.exports = {
         if (error) {
           return callBack(error);
         }
-        return callBack(null, results[0]);
+        console.log(results[0].id);
+        pool.query(
+          'select * from users_details where u_id = ?',
+          [results[0].id],
+          (error, results, fields) => {
+            if (error) {
+              return callBack(error);
+            }
+            return callBack(null, results[0]);
+          }
+        );
+        // return callBack(null, results[0]);
       }
     );
   },
