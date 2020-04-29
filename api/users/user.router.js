@@ -10,7 +10,7 @@ const {
 } = require("./user.controller");
 router.post("/", checkToken, create_Users);
 router.get("/", checkToken, get_Users);
-router.get("/:u_id", checkToken, get_UsersbyEid);
+router.get("/:e_id", checkToken, get_UsersbyEid);
 router.post("/login", login_UsersbyEid);
 
 module.exports = router;

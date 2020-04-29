@@ -19,7 +19,7 @@ module.exports = {
   create_Users: (req, res) => {
     const body = req.body;
     const salt = genSaltSync(10);
-    body.u_password = hashSync(body.u_password, salt);
+    body.e_password = hashSync(body.e_password, salt);
     create_Users(body, (err, results) => {
       if (err) {
         console.log(err);
@@ -47,8 +47,8 @@ module.exports = {
     });
   },
   get_UsersbyEid: (req, res) => {
-    const u_id = req.params.u_id;
-    get_UsersbyEid(u_id, (err, results) => {
+    const e_id = req.params.e_id;
+    get_UsersbyEid(e_id, (err, results) => {
       if (err) {
         console.log(err);
         return;
@@ -63,7 +63,7 @@ module.exports = {
       return res.json({
         response: "ok",
         employee: {
-          eID: results.u_id,
+          eID: results.e_id,
           eName: results.firstname + " " + results.lastname,
           eNID: results.nid_number,
           eDoB: results.dob,
@@ -76,7 +76,7 @@ module.exports = {
   },
   login_UsersbyEid: (req, res) => {
     const body = req.body;
-    login_UsersbyEid(body.u_id, body.u_password, (err, results) => {
+    login_UsersbyEid(body.e_id, body.e_password, (err, results) => {
       if (err) {
         console.log(err);
       }
@@ -86,9 +86,9 @@ module.exports = {
           data: "Invalid employee id or password"
         });
       }
-      const result = compareSync(body.u_password, results.u_password);
+      const result = compareSync(body.e_password, results.e_password);
       if (result) {
-        results.u_password = undefined;
+        results.e_password = undefined;
         const jsontoken = sign({
           result: results
         }, 'takiuddin93', {

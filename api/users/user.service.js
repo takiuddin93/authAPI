@@ -10,12 +10,12 @@ const {
 module.exports = {
   create_Users: (data, callBack) => {
     pool.query(
-      'insert into users(u_id, u_designation, u_email, u_password, status) values(?,?,?,?,?)',
+      'insert into users(e_id, e_designation, e_email, e_password, status) values(?,?,?,?,?)',
       [
-        data.u_id,
-        data.u_designation,
-        data.u_email,
-        data.u_password,
+        data.e_id,
+        data.e_designation,
+        data.e_email,
+        data.e_password,
         data.status
       ],
       (error, results, fields) => {
@@ -31,7 +31,7 @@ module.exports = {
     pool.query(
       `insert into users_details(u_id, firstname, lastname, nid_number, dob, blood_group, address, marital_status) values(?,?,?,?,?,?,?,?)`,
       [
-        data.u_id,
+        data.e_id,
         data.firstname,
         data.lastname,
         data.nid_number,
@@ -60,10 +60,10 @@ module.exports = {
       }
     );
   },
-  get_UsersbyEid: (u_id, callBack) => {
+  get_UsersbyEid: (e_id, callBack) => {
     pool.query(
-      'select * from users where u_id = ?',
-      [u_id],
+      'select * from users where e_id = ?',
+      [e_id],
       (error, results, fields) => {
         if (error) {
           return callBack(error);
@@ -82,20 +82,20 @@ module.exports = {
       }
     );
   },
-  login_UsersbyEid: (u_id, u_password, callBack) => {
+  login_UsersbyEid: (e_id, e_password, callBack) => {
     pool.query(
-      'select * from users where u_id = ?',
-      [u_id],
+      'select * from users where e_id = ?',
+      [e_id],
       (error, results, fields) => {
         if (error) {
           return callBack(error);
         }
-        const result = compareSync(u_password, results[0].u_password);
-        u_password = results[0].u_password
+        const result = compareSync(e_password, results[0].e_password);
+        e_password = results[0].e_password
         if (result) {
           pool.query(
-            'select * from users where u_id = ? and u_password = ?',
-            [u_id, u_password],
+            'select * from users where e_id = ? and e_password = ?',
+            [e_id, e_password],
             (error, results, fields) => {
               if (error) {
                 return callBack(error);
