@@ -1,3 +1,7 @@
+void
+
+function () {};
+
 const pool = require("../../configs/database");
 const {
   hashSync,
@@ -27,7 +31,13 @@ module.exports = {
     );
   },
   create_UsersDetails: (data, callBack) => {
-    callback = callback || function () {};
+    callback = callback || function (err, result) {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(result)
+      }
+    };
     pool.query(
       `insert into users_details(u_id, firstname, lastname, nid_number, dob, blood_group, address, marital_status) values(?,?,?,?,?,?,?,?)`,
       [
