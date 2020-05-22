@@ -1,6 +1,9 @@
+os : linux
+dist: bionic
 language: node_js
 node_js: 
-  - "stable"
+  - 12.16.2
+  - node
 cache:
   directories:
     - "node_modules"
