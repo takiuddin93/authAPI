@@ -1,4 +1,4 @@
-const router = require("express").Router();
+const Router = require("express").Router();
 const {
   checkToken
 } = require("../../token_auth/token_validation");
@@ -8,9 +8,9 @@ const {
   get_UsersbyEid,
   login_UsersbyEid
 } = require("./user.controller");
-router.post("/", checkToken, create_Users);
-router.get("/", checkToken, get_Users);
-router.get("/:e_id", checkToken, get_UsersbyEid);
-router.post("/login", login_UsersbyEid);
+Router.post("/", checkToken, create_Users);
+Router.get("/", checkToken, get_Users);
+Router.get("/:e_id", checkToken, get_UsersbyEid);
+Router.post("/login", login_UsersbyEid);
 
-module.exports = router;
+module.exports = Router;
