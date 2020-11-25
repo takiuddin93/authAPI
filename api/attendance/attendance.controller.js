@@ -9,7 +9,7 @@ module.exports = {
         console.log(err);
         return res.status(500).json({
           response: 0,
-          message: "Database connection error"
+          message: err
         });
       }
       return res.status(200).json({

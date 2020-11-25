@@ -15,6 +15,5 @@ app.use("/api/user", userRouter);
 
 
 app.listen(port, () => {
-  console.log(process.env);
   console.log("Server up and running on PORT :", port);
 });
