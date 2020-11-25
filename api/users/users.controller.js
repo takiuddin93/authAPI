@@ -4,7 +4,7 @@ const {
   get_Users,
   get_UsersbyEid,
   login_UsersbyEid
-} = require("./user.service");
+} = require("./users.service");
 
 const {
   hashSync,
