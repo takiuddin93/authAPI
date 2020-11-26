@@ -7,10 +7,11 @@ const moment = require("moment-timezone");
 
 module.exports = {
   create_Attendance: (data, callBack) => {
+    console.log(data);
     pool.query(
-      "INSERT INTO attendance(emp_id, checkin_date, checkin_time, checkin_tz, attendance_type, created_at, modified_at) VALUES(?,?,?,'" 
+      "INSERT INTO attendance(emp_id, checkin_date, checkin_time, attendance_type, checkin_tz, created_at, modified_at) VALUES(?,?,?,?,'"
       + moment().tz("Asia/Dhaka").format("YYYY-MM-DD HH:mm:ssZ")
-      + "',?,'" 
+      + "','"
       + moment().tz("Asia/Dhaka").format("YYYY-MM-DD HH:mm:ss")
       + "','"
       + moment().tz("Asia/Dhaka").format("YYYY-MM-DD HH:mm:ss") + "')",
@@ -18,8 +19,8 @@ module.exports = {
         data.emp_id,
         data.checkin_date,
         data.checkin_time,
-        data.checkin_tz,
         data.attendance_type,
+        data.checkin_tz,
         data.created_at,
         data.modified_at
       ],
@@ -39,7 +40,6 @@ module.exports = {
         if (error) {
           return callBack(error);
         }
-        console.log("Record found: " + results.emp_id);
         return callBack(null, results);
       }
     );

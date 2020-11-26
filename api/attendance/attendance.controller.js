@@ -25,21 +25,16 @@ module.exports = {
         console.log(err);
         return;
       }
-      console.log("Console: " +results.emp_id);
       if (!results) {
         return res.json({
           response: 0,
           message: "Record not Found"
         });
       }
+      console.log(results.length + " records found");
       return res.json({
         response: 1,
-        attendance: {
-          emp_id: results.emp_id,
-          checkin_date: results.checkin_date,
-          checkin_time: results.checkin_time,
-          checkin_tz: results.checkin_tz
-        },
+        data: results
       });
     });
   }
