@@ -46,7 +46,7 @@ module.exports = {
   },
   get_Userbyemp_id: (emp_id, callBack) => {
     pool.query(
-      'SELECT * FROM users WHERE emp_id = ?',
+      "SELECT * FROM users WHERE emp_id = ?",
       [emp_id],
       (error, results, fields) => {
         if (error) {

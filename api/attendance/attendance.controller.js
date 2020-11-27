@@ -24,8 +24,7 @@ module.exports = {
       if (err) {
         console.log(err);
         return;
-      }
-      if (!results) {
+      } else if (!results) {
         return res.json({
           response: 0,
           message: "Record not Found"
