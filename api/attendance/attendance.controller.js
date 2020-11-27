@@ -23,7 +23,10 @@ module.exports = {
     get_Attendancebyemp_id(emp_id, (err, results) => {
       if (err) {
         console.log(err);
-        return;
+        return res.json({
+          response: 0,
+          message: err
+        });
       } else if (!results) {
         return res.json({
           response: 0,

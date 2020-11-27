@@ -11,9 +11,9 @@ module.exports = {
     create_User(body, (err, results) => {
       if (err) {
         console.log(err);
-        return res.status(500).json({
+        return res.json({
           response: 0,
-          message: "Database connection error"
+          message: err
         });
       }
       if(results == body.emp_id){
@@ -64,7 +64,7 @@ module.exports = {
         console.log(err);
         return res.json({
           response: 0,
-          message: "Database connection error"
+          message: err
         });
       } else if (results == false) {
         console.log(results);
