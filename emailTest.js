@@ -33,7 +33,7 @@ app.get("/", async (req, res) => {
         };
         const mailInfo = {
             from: '"Taki Uddin" <' + process.env.EMAIL_AUTH + '>',
-            to: process.env.EMAIL_AUTH,
+            to: '"Taki Uddin" <' + process.env.EMAIL_AUTH + '>',
             subject: process.env.APP_NAME + " Account Verification",
             template: "orderConfirmation",
             context: otpVerify,
