@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon emailTest.js"
   },
   "keywords": [
     "node.js",
@@ -24,7 +24,9 @@
     "jsonwebtoken": "^8.5.1",
     "moment-timezone": "^0.5.31",
     "mysql2": "^2.2.5",
-    "nodemailer": "^6.4.16"
+    "nodemailer": "^6.4.16",
+    "nodemailer-express-handlebars": "^4.0.0",
+    "otp-generator": "^2.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
