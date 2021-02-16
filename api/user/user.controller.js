@@ -16,7 +16,7 @@ module.exports = {
           message: err
         });
       }
-      if(results == body.emp_id){
+      if(results === body.emp_id){
         return res.status(200).json({
           response: 2,
           data: results
@@ -66,14 +66,14 @@ module.exports = {
           response: 0,
           message: err
         });
-      } else if (results == false) {
+      } else if (results === false) {
         console.log(results);
         console.log("Password Error");
         return res.json({
           response: 1,
           data: "Password Error"
         });
-      } else if (results == true) {
+      } else if (results === true) {
         console.log(results);
         console.log("Login Approved");
         return res.json({

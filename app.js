@@ -7,9 +7,7 @@ const userRouter = require("./api/user/user.router");
 const usersRouter = require("./api/users/users.router");
 
 const moment = require("moment-timezone");
-console.log(moment().tz("Asia/Dhaka").format("YYYY-MM-DD HH:mm:ssZ"));
-var dateFormat = require('dateformat');
-console.log(dateFormat("longTime"));
+var dateFormat = require("dateformat");
 
 const port = process.env.APP_PORT;
 app.use(express.json());

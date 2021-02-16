@@ -37,12 +37,12 @@ app.get("/", async (req, res) => {
             subject: process.env.APP_NAME + " Account Verification",
             template: "orderConfirmation",
             context: otpVerify,
-        }
-        await transporter.sendMail(mailInfo)
-        res.send("Success")
+        };
+        await transporter.sendMail(mailInfo);
+        res.send("Success");
     } catch (e) {
         res.status(500).send(e)
     }
-})
+});
 
-app.listen(port, () => console.log(`app listening on port ${port}!`))
+app.listen(port, () => console.log(`app listening on port ${port}!`));
