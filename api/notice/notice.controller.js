@@ -1,10 +1,10 @@
 require("dotenv").config();
-const {create_Notice, get_Notice} = require("./notice.service");
+const {createNotice, getNotice} = require("./notice.service");
 
 module.exports = {
-  create_Notice: (req, res) => {
+  createNotice: (req, res) => {
     const body = req.body;
-    create_Notice(body, (err, results) => {
+    createNotice(body, (err, results) => {
       if (err) {
         console.log(err);
         return res.status(500).json({
@@ -18,9 +18,9 @@ module.exports = {
       });
     });
   },
-  get_Notice: (req, res) => {
+  getNotice: (req, res) => {
     const all = req.params.all;
-    get_Notice(all, (err, results) => {
+    getNotice(all, (err, results) => {
       if (err) {
         console.log(err);
         return res.json({

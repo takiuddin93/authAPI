@@ -1,10 +1,10 @@
 require("dotenv").config();
-const {get_All_Users} = require("./users.service");
+const {getAllUsers} = require("./users.service");
 
 module.exports = {
-  get_All_Users: (req, res) => {
+  getAllUsers: (req, res) => {
     const emp_id = req.params.emp_id;
-    get_All_Users(emp_id, (err, results) => {
+    getAllUsers(emp_id, (err, results) => {
       if (err) {
         console.log(err);
         return res.json({

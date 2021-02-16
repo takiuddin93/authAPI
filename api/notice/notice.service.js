@@ -6,7 +6,7 @@ const pool = require("../../configs/database");
 const moment = require("moment-timezone");
 
 module.exports = {
-  create_Notice: (data, callBack) => {
+  createNotice: (data, callBack) => {
     console.log('dhukse');
     console.log(data);
     pool.query(
@@ -31,10 +31,10 @@ module.exports = {
       }
     );
   },
-  get_Notice: (all, callBack) => {
+  getNotice: (all, callBack) => {
     console.log(all);
     pool.query(
-      'SELECT * FROM notice_board',
+      "SELECT * FROM notice_board",
       [all],
       (error, results, fields) => {
         if (error) {

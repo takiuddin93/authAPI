@@ -34,7 +34,7 @@ module.exports = {
   },
   get_Attendancebyemp_id: (emp_id, callBack) => {
     pool.query(
-      'SELECT * FROM attendance WHERE emp_id = ?',
+      "SELECT * FROM attendance WHERE emp_id = ?",
       [emp_id],
       (error, results, fields) => {
         if (error) {
