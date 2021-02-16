@@ -11,7 +11,7 @@ const {
 const moment = require("moment-timezone");
 
 module.exports = {
-  create_User: (data, callBack) => {
+  createUser: (data, callBack) => {
     pool.query(
       "SELECT * FROM users WHERE emp_id = ?",
       [data.emp_id],
@@ -44,7 +44,7 @@ module.exports = {
       }
     );
   },
-  get_Userbyemp_id: (emp_id, callBack) => {
+  getUserbyempid: (emp_id, callBack) => {
     pool.query(
       "SELECT * FROM users WHERE emp_id = ?",
       [emp_id],
@@ -66,7 +66,7 @@ module.exports = {
       }
     );
   },
-  login_Userbyemp_id: (emp_id, emp_password, callBack) => {
+  loginUserbyempid: (emp_id, emp_password, callBack) => {
     pool.query(
       "SELECT emp_password FROM users WHERE emp_id = ?",
       [emp_id],

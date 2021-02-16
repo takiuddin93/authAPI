@@ -1,14 +1,14 @@
 require("dotenv").config();
-const {create_User, get_Userbyemp_id, login_Userbyemp_id} = require("./user.service");
+const {createUser, getUserbyempid, loginUserbyempid} = require("./user.service");
 
 const {genSaltSync, hashSync, compareSync} = require("bcrypt");
 
 module.exports = {
-  create_User: (req, res) => {
+  createUser: (req, res) => {
     const body = req.body;
     const salt = genSaltSync(10);
     body.emp_password = hashSync(body.emp_password, salt);
-    create_User(body, (err, results) => {
+    createUser(body, (err, results) => {
       if (err) {
         console.log(err);
         return res.json({
@@ -29,9 +29,9 @@ module.exports = {
       }
     });
   },
-  get_Userbyemp_id: (req, res) => {
+  getUserbyempid: (req, res) => {
     const emp_id = req.params.emp_id;
-    get_Userbyemp_id(emp_id, (err, results) => {
+    getUserbyempid(emp_id, (err, results) => {
       if (err) {
         console.log(err);
         return;
@@ -57,9 +57,9 @@ module.exports = {
       });
     });
   },
-  login_Userbyemp_id: (req, res) => {
+  loginUserbyempid: (req, res) => {
     const body = req.body;
-    login_Userbyemp_id(body.emp_id, body.emp_password, (err, results) => {
+    loginUserbyempid(body.emp_id, body.emp_password, (err, results) => {
       if (err) {
         console.log(err);
         return res.json({

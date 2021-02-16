@@ -1,12 +1,11 @@
 require("dotenv").config();
-const {create_Attendance, get_Attendancebyemp_id} = require("./attendance.service");
+const {createAttendance, getAttendancebyempid} = require("./attendance.service");
 
 module.exports = {
-  create_Attendance: (req, res) => {
+  createAttendance: (req, res) => {
     const body = req.body;
-    create_Attendance(body, (err, results) => {
+    createAttendance(body, (err, results) => {
       if (err) {
-        console.log(err);
         return res.status(500).json({
           response: 0,
           message: err
@@ -18,11 +17,10 @@ module.exports = {
       });
     });
   },
-  get_Attendancebyemp_id: (req, res) => {
+  getAttendancebyempid: (req, res) => {
     const emp_id = req.params.emp_id;
-    get_Attendancebyemp_id(emp_id, (err, results) => {
+    getAttendancebyempid(emp_id, (err, results) => {
       if (err) {
-        console.log(err);
         return res.json({
           response: 0,
           message: err
@@ -33,7 +31,6 @@ module.exports = {
           message: "Record not Found"
         });
       }
-      console.log(results.length + " records found");
       return res.json({
         response: 1,
         data: results

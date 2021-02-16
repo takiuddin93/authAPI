@@ -6,7 +6,7 @@ const pool = require("../../configs/database");
 const moment = require("moment-timezone");
 
 module.exports = {
-  create_Attendance: (data, callBack) => {
+  createAttendance: (data, callBack) => {
     console.log(data);
     pool.query(
       "INSERT INTO attendance(emp_id, checkin_date, checkin_time, attendance_type, checkin_tz, created_at, modified_at) VALUES(?,?,?,?,'"
@@ -32,7 +32,7 @@ module.exports = {
       }
     );
   },
-  get_Attendancebyemp_id: (emp_id, callBack) => {
+  getAttendancebyempid: (emp_id, callBack) => {
     pool.query(
       "SELECT * FROM attendance WHERE emp_id = ?",
       [emp_id],

@@ -30,10 +30,10 @@ module.exports = {
       } else if (!results) {
         return res.json({
           response: 0,
-          message: "Record not Found"
+          message: "No Notice Found"
         });
       }
-      console.log(results.length + " records found");
+      console.log(results.length + " notice found");
       return res.json({
         response: 1,
         data: results
