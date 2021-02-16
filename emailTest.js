@@ -41,6 +41,6 @@ app.get("/", async (req, res) => {
         await transporter.sendMail(mailInfo);
         res.send("Success");
     } catch (e) {
-        res.status(500).send(e)
+        res.status(500).send(e);
     }
 });

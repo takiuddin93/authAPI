@@ -40,7 +40,7 @@ module.exports = {
           message: "Record not Found"
         });
       }
-      results.password = '';
+      results.password = "";
       return res.json({
         response: 1,
         employee: {
