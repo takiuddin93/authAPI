@@ -1,7 +1,7 @@
-const Router = require("express").Router();
+const _router = require("express").Router();
 const {createAttendance, getAttendancebyempid} = require("./attendance.controller");
 
-Router.post("/", createAttendance);
-Router.get("/:emp_id", getAttendancebyempid);
+_router.post("/", createAttendance);
+_router.get("/:emp_id", getAttendancebyempid);
 
-module.exports = Router;
+module.exports = _router;
