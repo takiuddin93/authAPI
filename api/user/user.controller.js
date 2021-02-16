@@ -10,7 +10,6 @@ module.exports = {
     body.emp_password = hashSync(body.emp_password, salt);
     createUser(body, (err, results) => {
       if (err) {
-        console.log(err);
         return res.json({
           response: 0,
           message: err
@@ -33,7 +32,6 @@ module.exports = {
     const emp_id = req.params.emp_id;
     getUserbyempid(emp_id, (err, results) => {
       if (err) {
-        console.log(err);
         return;
       }
       if (!results) {
@@ -61,28 +59,21 @@ module.exports = {
     const body = req.body;
     loginUserbyempid(body.emp_id, body.emp_password, (err, results) => {
       if (err) {
-        console.log(err);
         return res.json({
           response: 0,
           message: err
         });
       } else if (results === false) {
-        console.log(results);
-        console.log("Password Error");
         return res.json({
           response: 1,
           data: "Password Error"
         });
       } else if (results === true) {
-        console.log(results);
-        console.log("Login Approved");
         return res.json({
           response: 2,
           data: "Login Approved"
         });
       } else {
-        console.log(results);
-        console.log("Invalid Employee ID or Password");
         return res.json({
           response: 3,
           data: "Invalid Employee ID or Password"

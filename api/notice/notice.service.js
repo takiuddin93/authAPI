@@ -7,7 +7,6 @@ const moment = require("moment-timezone");
 
 module.exports = {
   createNotice: (data, callBack) => {
-    console.log(data);
     pool.query(
       "INSERT INTO notice(text, image, url, priority, posted_by, created_at, modified_at) VALUES(?,?,?,?,?,'"
       + moment().tz("Asia/Dhaka").format("YYYY-MM-DD HH:mm:ss")
@@ -31,7 +30,6 @@ module.exports = {
     );
   },
   getNotice: (all, callBack) => {
-    console.log(all);
     pool.query(
       "SELECT * FROM notice_board",
       [all],

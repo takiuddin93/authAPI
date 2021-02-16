@@ -6,7 +6,6 @@ module.exports = {
     const body = req.body;
     createNotice(body, (err, results) => {
       if (err) {
-        console.log(err);
         return res.status(500).json({
           response: 0,
           message: err
@@ -22,7 +21,6 @@ module.exports = {
     const all = req.params.all;
     getNotice(all, (err, results) => {
       if (err) {
-        console.log(err);
         return res.json({
           response: 0,
           message: err
@@ -33,7 +31,6 @@ module.exports = {
           message: "No Notice Found"
         });
       }
-      console.log(results.length + " notice found");
       return res.json({
         response: 1,
         data: results

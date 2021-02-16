@@ -7,7 +7,6 @@ const moment = require("moment-timezone");
 
 module.exports = {
   createAttendance: (data, callBack) => {
-    console.log(data);
     pool.query(
       "INSERT INTO attendance(emp_id, checkin_date, checkin_time, attendance_type, checkin_tz, created_at, modified_at) VALUES(?,?,?,?,'"
       + moment().tz("Asia/Dhaka").format("YYYY-MM-DD HH:mm:ssZ")

@@ -9,7 +9,6 @@ module.exports = {
     pool.query("SELECT * FROM users_details WHERE emp_id != ?",[emp_id],
     (error, results, fields) => {
       if (error) {
-        console.error(error);
         return callBack(error);
       }else{
         return callBack(null, results);}
