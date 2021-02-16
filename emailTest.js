@@ -44,5 +44,3 @@ app.get("/", async (req, res) => {
         res.status(500).send(e)
     }
 });
-
-app.listen(port, () => console.log("app listening on port ${port}!"));
