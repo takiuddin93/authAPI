@@ -18,8 +18,8 @@ module.exports = {
     });
   },
   getAttendancebyempid: (req, res) => {
-    const empID = req.params.empID;
-    getAttendancebyempid(empID, (err, results) => {
+    const emp_id = req.params.emp_id;
+    getAttendancebyempid(emp_id, (err, results) => {
       if (err) {
         return res.json({
           response: 0,
