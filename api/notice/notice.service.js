@@ -1,6 +1,4 @@
-void
-
-function () {};
+void function () {};
 
 const pool = require("../../configs/database");
 const moment = require("moment-timezone");

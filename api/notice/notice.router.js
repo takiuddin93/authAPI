@@ -1,7 +1,7 @@
-const _router = require("express").Router();
+const router = require("express").Router();
 const {createNotice, getNotice} = require("./notice.controller");
 
-_router.post("/", createNotice);
-_router.get("/:all", getNotice);
+router.post("/", createNotice);
+router.get("/:all", getNotice);
 
-module.exports = _router;
+module.exports = router;
