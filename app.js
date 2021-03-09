@@ -17,7 +17,6 @@ app.use("/api/notice", noticeRouter);
 app.use("/api/user", userRouter);
 app.use("/api/users", usersRouter);
 
-
 app.listen(port, () => {
   console.log("Server up and running on PORT :", port);
 });
