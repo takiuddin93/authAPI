@@ -24,7 +24,7 @@ const options = {
     viewPath: "views"
 };
 transporter.use("compile", hbs(options));
-app.get("/", async (req, res) => {
+app.get("/", async(req, res) => {
     try {
         const otpVerify = {
             appName: process.env.APP_NAME,
